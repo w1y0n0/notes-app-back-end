@@ -1,0 +1,209 @@
+### INIT
+
+C:\javascript-projects\notes-app-back-end>npm init --y
+Wrote to C:\javascript-projects\notes-app-back-end\package.json:
+
+{
+  "name": "notes-app-back-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"       
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+
+C:\javascript-projects\notes-app-back-end>npm install nodemon --save-dev
+
+added 29 packages, and audited 30 packages in 4s
+
+4 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+C:\javascript-projects\notes-app-back-end>npm run start
+
+> notes-app-back-end@1.0.0 start
+> nodemon server.js
+
+[nodemon] 3.1.3
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,cjs,json
+[nodemon] starting `node server.js`
+Hallo kita akan membuat RESTful API
+[nodemon] clean exit - waiting for changes before restart
+
+### Menggunakan ESLint
+
+C:\javascript-projects\notes-app-back-end>npm install eslint@7.32.0
+npm WARN deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.    
+npm WARN deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+npm WARN deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm WARN deprecated @humanwhocodes/config-array@0.5.0: Use @eslint/config-array instead
+npm WARN deprecated @humanwhocodes/object-schema@1.2.1: Use @eslint/object-schema instead
+
+added 45 packages, removed 24 packages, changed 58 packages, and audited 133 packages in 9s
+
+19 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+C:\javascript-projects\notes-app-back-end>npx eslint --init
+√ How would you like to use ESLint? · style       
+√ What type of modules does your project use? · commonjs
+√ Which framework does your project use? · none
+√ Does your project use TypeScript? · No / Yes
+√ Where does your code run? · node
+√ How would you like to define a style for your project? · guide
+√ Which style guide do you want to follow? · airbnb
+√ What format do you want your config file to be in? · JSON
+Checking peerDependencies of eslint-config-airbnb-base@latest
+Local ESLint installation not found.
+The config that you've selected requires the following dependencies:
+
+eslint-config-airbnb-base@latest eslint@^7.32.0 || ^8.2.0 eslint-plugin-import@^2.25.2
+√ Would you like to install them now with npm? · No / Yes
+Installing eslint-config-airbnb-base@latest, eslint@^7.32.0 || ^8.2.0, eslint-plugin-import@^2.25.2
+npm WARN idealTree Removing dependencies.eslint in favor of devDependencies.eslint
+npm WARN deprecated @humanwhocodes/config-array@0.11.14: Use @eslint/config-array instead
+npm WARN deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
+
+added 115 packages, removed 33 packages, changed 12 packages, and audited 215 packages in 17s
+
+89 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+Successfully created .eslintrc.json file in C:\javascript-projects\notes-app-back-end
+ESLint was installed locally. We recommend using this local copy instead of your globally-installed copy.
+
+C:\javascript-projects\notes-app-back-end>npm run lint
+
+> notes-app-back-end@1.0.0 lint
+> eslint ./
+
+
+C:\javascript-projects\notes-app-back-end\server.js
+  1:1   warning  Unexpected console statement                   no-console
+  1:52  error    Newline required at end of file but not found  eol-last
+
+✖ 2 problems (1 error, 1 warning)
+  1 error and 0 warnings potentially fixable with the `--fix` option.
+
+### Latihan: Membuat HTTP Server
+
+C:\javascript-projects\notes-app-back-end>npm install @hapi/hapi
+
+added 30 packages, and audited 245 packages in 16s
+
+89 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+C:\javascript-projects\notes-app-back-end>npm run start
+
+> notes-app-back-end@1.0.0 start
+> nodemon ./src/server.js       
+
+[nodemon] 3.1.3
+[nodemon] to restart at any time, enter `rs`  
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,cjs,json
+[nodemon] starting `node ./src/server.js`     
+Server berjalan pada http://localhost:5000
+
+### Latihan: Menyimpan Catatan
+
+C:\javascript-projects\notes-app-back-end>npm install nanoid@3
+
+added 1 package, and audited 246 packages in 39s
+
+90 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+### Latihan: Mengoperasikan EC2 Instance Melalui SSH
+
+C:\javascript-projects\notes-app-back-end>ssh -i "notes-api-webserver.pem" ubuntu@ec2-13-212-175-183.ap-southeast-1.compute.amazonaws.com
+The authenticity of host 'ec2-13-212-175-183.ap-southeast-1.compute.amazonaws.com (13.212.175.183)' can't be established.
+ECDSA key fingerprint is SHA256:DQ3Z5I4UqMHAdBkYA1zV3rwGaQ4J5VI19LmE7i06vqs.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'ec2-13-212-175-183.ap-southeast-1.compute.amazonaws.com,13.212.175.183' (ECDSA) to the list of known hosts.
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions for 'notes-api-webserver.pem' are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+Load key "notes-api-webserver.pem": bad permissions
+ubuntu@ec2-13-212-175-183.ap-southeast-1.compute.amazonaws.com: Permission denied (publickey).
+
+---
+SOLUSI:
+-------
+PS C:\javascript-projects\notes-app-back-end> $path = ".\notes-api-webserver.pem"
+>> # Reset to remove explicit permissions
+>> icacls.exe $path /reset
+>> # Give current user explicit read-permission
+>> icacls.exe $path /GRANT:R "$($env:USERNAME):(R)"
+>> # Disable inheritance and remove inherited permissions
+>> icacls.exe $path /inheritance:r
+processed file: .\notes-api-webserver.pem
+Successfully processed 1 files; Failed processing 0 files
+processed file: .\notes-api-webserver.pem
+Successfully processed 1 files; Failed processing 0 files
+processed file: .\notes-api-webserver.pem
+Successfully processed 1 files; Failed processing 0 files
+
+---
+C:\javascript-projects\notes-app-back-end>ssh -i "notes-api-webserver.pem" ubuntu@ec2-13-212-175-183.ap-southeast-1.compute.amazonaws.com
+Welcome to Ubuntu 24.04 LTS (GNU/Linux 6.8.0-1008-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Mon Jun 17 02:09:02 UTC 2024
+
+  System load:  0.08              Processes:             104
+  Usage of /:   23.2% of 6.71GB   Users logged in:       0
+  Memory usage: 20%               IPv4 address for enX0: 172.31.41.241
+  Swap usage:   0%
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+ubuntu@ip-172-31-41-241:~$
+
+ubuntu@ip-172-31-41-241:~$ exit
+logout
+Connection to ec2-13-212-175-183.ap-southeast-1.compute.amazonaws.com closed.
+
+###
