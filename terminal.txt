@@ -1,209 +1,75 @@
-### INIT
+### Latihan: Menginisialisasi Local Repository pada Proyek Web Server
 
-C:\javascript-projects\notes-app-back-end>npm init --y
-Wrote to C:\javascript-projects\notes-app-back-end\package.json:
+C:\javascript-projects\notes-app-back-end>git init
+Initialized empty Git repository in C:/javascript-projects/notes-app-back-end/.git/
 
-{
-  "name": "notes-app-back-end",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"       
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
-}
+C:\javascript-projects\notes-app-back-end>git add .
+warning: in the working copy of '.eslintrc.json', LF will be replaced by CRLF the next time Git touches it
 
-C:\javascript-projects\notes-app-back-end>npm install nodemon --save-dev
+C:\javascript-projects\notes-app-back-end>git commit -m "initial commit"
+[master (root-commit) 958fe14] initial commit
+ 9 files changed, 3541 insertions(+)
+ create mode 100644 .eslintrc.json
+ create mode 100644 .gitignore
+ create mode 100644 package-lock.json        
+ create mode 100644 package.json
+ create mode 100644 src/handler.js
+ create mode 100644 src/notes.js
+ create mode 100644 src/routes.js
+ create mode 100644 src/server.js
+ create mode 100644 terminal.txt
 
-added 29 packages, and audited 30 packages in 4s
+ ### Latihan: Memasang GitHub CLI
 
-4 packages are looking for funding
-  run `npm fund` for details
+ Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
 
-found 0 vulnerabilities
+Try the new cross-platform PowerShell https://aka.ms/pscore6
 
-C:\javascript-projects\notes-app-back-end>npm run start
+PS C:\Users\Wiyono> winget install --id GitHub.cli
+The `msstore` source requires that you view the following agreements before using.
+Terms of Transaction: https://aka.ms/microsoft-store-terms-of-transaction
+The source requires the current machine's 2-letter geographic region to be sent to the backend service to function properly (ex. "US").
 
-> notes-app-back-end@1.0.0 start
-> nodemon server.js
-
-[nodemon] 3.1.3
-[nodemon] to restart at any time, enter `rs`
-[nodemon] watching path(s): *.*
-[nodemon] watching extensions: js,mjs,cjs,json
-[nodemon] starting `node server.js`
-Hallo kita akan membuat RESTful API
-[nodemon] clean exit - waiting for changes before restart
-
-### Menggunakan ESLint
-
-C:\javascript-projects\notes-app-back-end>npm install eslint@7.32.0
-npm WARN deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.    
-npm WARN deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
-npm WARN deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
-npm WARN deprecated @humanwhocodes/config-array@0.5.0: Use @eslint/config-array instead
-npm WARN deprecated @humanwhocodes/object-schema@1.2.1: Use @eslint/object-schema instead
-
-added 45 packages, removed 24 packages, changed 58 packages, and audited 133 packages in 9s
-
-19 packages are looking for funding
-  run `npm fund` for details
-
-found 0 vulnerabilities
-
-C:\javascript-projects\notes-app-back-end>npx eslint --init
-√ How would you like to use ESLint? · style       
-√ What type of modules does your project use? · commonjs
-√ Which framework does your project use? · none
-√ Does your project use TypeScript? · No / Yes
-√ Where does your code run? · node
-√ How would you like to define a style for your project? · guide
-√ Which style guide do you want to follow? · airbnb
-√ What format do you want your config file to be in? · JSON
-Checking peerDependencies of eslint-config-airbnb-base@latest
-Local ESLint installation not found.
-The config that you've selected requires the following dependencies:
-
-eslint-config-airbnb-base@latest eslint@^7.32.0 || ^8.2.0 eslint-plugin-import@^2.25.2
-√ Would you like to install them now with npm? · No / Yes
-Installing eslint-config-airbnb-base@latest, eslint@^7.32.0 || ^8.2.0, eslint-plugin-import@^2.25.2
-npm WARN idealTree Removing dependencies.eslint in favor of devDependencies.eslint
-npm WARN deprecated @humanwhocodes/config-array@0.11.14: Use @eslint/config-array instead
-npm WARN deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
-
-added 115 packages, removed 33 packages, changed 12 packages, and audited 215 packages in 17s
-
-89 packages are looking for funding
-  run `npm fund` for details
-
-found 0 vulnerabilities
-Successfully created .eslintrc.json file in C:\javascript-projects\notes-app-back-end
-ESLint was installed locally. We recommend using this local copy instead of your globally-installed copy.
-
-C:\javascript-projects\notes-app-back-end>npm run lint
-
-> notes-app-back-end@1.0.0 lint
-> eslint ./
-
-
-C:\javascript-projects\notes-app-back-end\server.js
-  1:1   warning  Unexpected console statement                   no-console
-  1:52  error    Newline required at end of file but not found  eol-last
-
-✖ 2 problems (1 error, 1 warning)
-  1 error and 0 warnings potentially fixable with the `--fix` option.
-
-### Latihan: Membuat HTTP Server
-
-C:\javascript-projects\notes-app-back-end>npm install @hapi/hapi
-
-added 30 packages, and audited 245 packages in 16s
-
-89 packages are looking for funding
-  run `npm fund` for details
-
-found 0 vulnerabilities
-
-C:\javascript-projects\notes-app-back-end>npm run start
-
-> notes-app-back-end@1.0.0 start
-> nodemon ./src/server.js       
-
-[nodemon] 3.1.3
-[nodemon] to restart at any time, enter `rs`  
-[nodemon] watching path(s): *.*
-[nodemon] watching extensions: js,mjs,cjs,json
-[nodemon] starting `node ./src/server.js`     
-Server berjalan pada http://localhost:5000
-
-### Latihan: Menyimpan Catatan
-
-C:\javascript-projects\notes-app-back-end>npm install nanoid@3
-
-added 1 package, and audited 246 packages in 39s
-
-90 packages are looking for funding
-  run `npm fund` for details
-
-found 0 vulnerabilities
-
-### Latihan: Mengoperasikan EC2 Instance Melalui SSH
-
-C:\javascript-projects\notes-app-back-end>ssh -i "notes-api-webserver.pem" ubuntu@ec2-13-212-175-183.ap-southeast-1.compute.amazonaws.com
-The authenticity of host 'ec2-13-212-175-183.ap-southeast-1.compute.amazonaws.com (13.212.175.183)' can't be established.
-ECDSA key fingerprint is SHA256:DQ3Z5I4UqMHAdBkYA1zV3rwGaQ4J5VI19LmE7i06vqs.
-Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
-Warning: Permanently added 'ec2-13-212-175-183.ap-southeast-1.compute.amazonaws.com,13.212.175.183' (ECDSA) to the list of known hosts.
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-Permissions for 'notes-api-webserver.pem' are too open.
-It is required that your private key files are NOT accessible by others.
-This private key will be ignored.
-Load key "notes-api-webserver.pem": bad permissions
-ubuntu@ec2-13-212-175-183.ap-southeast-1.compute.amazonaws.com: Permission denied (publickey).
+Do you agree to all the source agreements terms?
+[Y] Yes  [N] No: y
+Found GitHub CLI [GitHub.cli] Version 2.51.0
+This application is licensed to you by its owner.
+Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
+Downloading https://github.com/cli/cli/releases/download/v2.51.0/gh_2.51.0_windows_amd64.msi
+  ██████████████████████████████  12.7 MB / 12.7 MB
+Successfully verified installer hash
+Starting package install...
+The installer will request to run as administrator, expect a prompt.
+Successfully installed
 
 ---
-SOLUSI:
--------
-PS C:\javascript-projects\notes-app-back-end> $path = ".\notes-api-webserver.pem"
->> # Reset to remove explicit permissions
->> icacls.exe $path /reset
->> # Give current user explicit read-permission
->> icacls.exe $path /GRANT:R "$($env:USERNAME):(R)"
->> # Disable inheritance and remove inherited permissions
->> icacls.exe $path /inheritance:r
-processed file: .\notes-api-webserver.pem
-Successfully processed 1 files; Failed processing 0 files
-processed file: .\notes-api-webserver.pem
-Successfully processed 1 files; Failed processing 0 files
-processed file: .\notes-api-webserver.pem
-Successfully processed 1 files; Failed processing 0 files
+Wiyono@DESKTOP-200LNFH MINGW64 /c/javascript-projects/notes-app-back-end (master)
+$ gh auth login
+? What account do you want to log into? GitHub.com
+? What is your preferred protocol for Git operations on this host? HTTPS
+? Authenticate Git with your GitHub credentials? Yes    
+? How would you like to authenticate GitHub CLI? Paste an authentication token        
+Tip: you can generate a Personal Access Token here https://github.com/settings/tokens
+The minimum required scopes are 'repo', 'read:org', 'workflow'.
+? Paste your authentication token: ****************************************
+- gh config set -h github.com git_protocol https
+✓ Configured git protocol
+✓ Logged in as w1y0n0
 
----
-C:\javascript-projects\notes-app-back-end>ssh -i "notes-api-webserver.pem" ubuntu@ec2-13-212-175-183.ap-southeast-1.compute.amazonaws.com
-Welcome to Ubuntu 24.04 LTS (GNU/Linux 6.8.0-1008-aws x86_64)
+### Latihan: Menghubungkan Local Repository dengan Remote Repository
 
- * Documentation:  https://help.ubuntu.com
- * Management:     https://landscape.canonical.com
- * Support:        https://ubuntu.com/pro
+Wiyono@DESKTOP-200LNFH MINGW64 /c/javascript-projects/notes-app-back-end (master)
+$ git remote add origin https://github.com/w1y0n0/notes-app-back-end.git
 
- System information as of Mon Jun 17 02:09:02 UTC 2024
+Wiyono@DESKTOP-200LNFH MINGW64 /c/javascript-projects/notes-app-back-end (master)
+$ git push origin master
+Enumerating objects: 12, done.
+Counting objects: 100% (12/12), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (11/11), done.
+Writing objects: 100% (12/12), 32.03 KiB | 6.41 MiB/s, done.
+Total 12 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/w1y0n0/notes-app-back-end.git
+ * [new branch]      master -> master
 
-  System load:  0.08              Processes:             104
-  Usage of /:   23.2% of 6.71GB   Users logged in:       0
-  Memory usage: 20%               IPv4 address for enX0: 172.31.41.241
-  Swap usage:   0%
-
-Expanded Security Maintenance for Applications is not enabled.
-
-0 updates can be applied immediately.
-
-Enable ESM Apps to receive additional future security updates.
-See https://ubuntu.com/esm or run: sudo pro status
-
-
-The list of available updates is more than a week old.
-To check for new updates run: sudo apt update
-
-
-The programs included with the Ubuntu system are free software;
-the exact distribution terms for each program are described in the
-individual files in /usr/share/doc/*/copyright.
-
-Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
-applicable law.
-
-To run a command as administrator (user "root"), use "sudo <command>".
-See "man sudo_root" for details.
-
-ubuntu@ip-172-31-41-241:~$
-
-ubuntu@ip-172-31-41-241:~$ exit
-logout
-Connection to ec2-13-212-175-183.ap-southeast-1.compute.amazonaws.com closed.
-
-###
