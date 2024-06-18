@@ -73,3 +73,98 @@ Total 12 (delta 0), reused 0 (delta 0), pack-reused 0
 To https://github.com/w1y0n0/notes-app-back-end.git
  * [new branch]      master -> master
 
+### Menjalankan Postman Collection secara Terprogram dengan Newman
+
+C:\javascript-projects\notes-app-back-end>npm install newman --g
+npm WARN deprecated har-validator@5.1.5: this library is no longer supported
+npm WARN deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+
+added 120 packages in 1m
+
+C:\javascript-projects\notes-app-back-end>newman -v
+6.1.3
+
+C:\javascript-projects\notes-app-back-end>npm run start-dev
+
+> notes-app-back-end@1.0.0 start-dev
+> nodemon ./src/server.js
+
+[nodemon] 3.1.3
+[nodemon] to restart at any time, enter `rs`  
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,cjs,json
+[nodemon] starting `node ./src/server.js`     
+Server berjalan pada http://localhost:5000
+
+C:\javascript-projects\notes-app-back-end>newman run notes-api-test.postman_collection.json --environment notes-api-test.postman_environment.json
+newman
+
+Notes API Test
+
+→ Add New Note
+  POST localhost:5000/notes [201 Created, 382B, 45ms]
+  √  response status code should have 201 value
+  √  response Content-Type header should have application/json value
+  √  response body should be an object
+  √  response body should have correct property and value
+  √  response body data should have noteId property and not equal to empty
+
+→ Get All Notes
+  GET localhost:5000/notes [200 OK, 518B, 7ms]
+  √  response status code should have 200 value
+  √  response Content-Type header should have application/json value
+  √  response body should an object
+  √  response body should have the correct property and value
+  √  response body data should have a notes array and contain at least 1 item
+
+→ Get Note by ID
+  GET localhost:5000/notes/DqhwRE6FJo54Ofc2 [200 OK, 515B, 5ms]
+  √  response status code should have 200 value
+  √  response Content-Type header should have application/json value
+  √  response body should be an object
+  √  response body should have the correct property and value
+  √  response body data should contain note object
+  √  note object should contain correct value for id, title, body, and tags property
+
+→ Update Note by ID
+  PUT localhost:5000/notes/DqhwRE6FJo54Ofc2 [200 OK, 339B, 3ms]
+  √  response status code should have 200 value
+  √  response Content-Type header should have application/json value
+  √  response body should be an object
+  √  response body should have correct property and value
+  √  when request the updated note
+  GET http://localhost:5000/notes/DqhwRE6FJo54Ofc2 [200 OK, 531B, 4ms]
+  √  then the updated note should contain the latest data
+
+→ Delete Note by ID
+  DELETE localhost:5000/notes/DqhwRE6FJo54Ofc2 [200 OK, 336B, 5ms]
+  √  response status code should have 200 value
+  √  response Content-Type header should have application/json value
+  √  response body should be an object
+  √  response body should have correct property and value
+  √  when request the deleted note
+  GET http://localhost:5000/notes/DqhwRE6FJo54Ofc2 [404 Not Found, 339B, 3ms]
+  √  the deleted note should be not found
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │                7 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │                5 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                0 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │               28 │                0 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 474ms                                     │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 926B (approx)                            │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 10ms [min: 3ms, max: 45ms, s.d.: 14ms] │
+└───────────────────────────────────────────────────────────────┘
+
+###
+
